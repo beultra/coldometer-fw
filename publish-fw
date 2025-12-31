@@ -41,5 +41,8 @@ my $fileLen = sprintf("%d", $total);
 open(my $oh, ">", "public/firmware.bin.metadata") or die("Can't open metadata file");
 printf $oh "{\n  \"crc32\": $fileCrc,\n  \"length\": $fileLen\n}\n";
 close($oh);
+system("git commit -a -m \"fw push\"");
+system("git push");
+
 
 
